@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html ng-app="NYTFantasy" ng-controller="NYTFantasyController">
+<head>
+	<meta charset="utf-8">
+	<title>NYT Fantasy</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="index.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+	<div ui-view>
+		<div class="container-fluid">
+			<div>
+				<nav class="navbar navbar-static-top navbar-default">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="#">
+								<img alt="NYT Logo" src="images/nyt.png">
+							</a>
+						</div>
+						<div class="navbar-text navbar-left" id="navbar_nytfantasy_id">
+							NYT Fantasy
+						</div>
+						<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Phil Terp</a></p>
+					</div>
+				</nav>
+			</div>
+			<div>
+				<nav class="col-sm-3">
+					<div class="sidebar-nav">
+						<uib-tabset vertical="true" type="pills">
+							<uib-tab heading="Last Score"></uib-tab>
+							<uib-tab heading="Make Selections"></uib-tab>
+							<uib-tab heading="Leaderboard"></uib-tab>
+						</uib-tabset>
+					</div>
+				</nav>
+			</div>
+			<div class="jumbotron col-sm-9">
+				<div class="col-md-4">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Word</th>
+								<th>Score</th>
+							</tr>
+							<tr ng-repeat="todaysWord in todaysWords">
+								<td class="{{todaysWord.$rank}}">{{todaysWord.word}}</td>
+								<td class="{{todaysWord.$rank}}">{{todaysWord.score}}</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

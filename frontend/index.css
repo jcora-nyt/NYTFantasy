@@ -1,0 +1,11 @@
+/* Navbar Styles*/
+.navbar-brand {
+	padding: 10px;
+}
+.navbar-right {
+    padding-right: 15px;
+}
+#navbar_nytfantasy_id {
+    font-size: 20px;
+    font-weight: bold;
+}
