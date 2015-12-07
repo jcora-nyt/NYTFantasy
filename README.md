@@ -13,6 +13,7 @@ NYT Fantasy Services
 Returns a list of all leagues. ID's and date, status CLOSED/OPEN. 
 
 Response
+```
 [
   {
     "id": 3,
@@ -33,7 +34,7 @@ Response
     "score_time":"2015-12-05T06:00:00Z"
   }
 ]
-
+```
 
 ##### Get League Details
 
@@ -41,6 +42,7 @@ Response
 Returns the detail of a particular league in context of a user, list of ngrams and scores populated for each ngram if league is closed. This will also contain the leaderboard for that league.
 
 Response
+```
 {
   "id": 2,
   "name":"Dec 5th League",
@@ -85,11 +87,13 @@ Response
     }
   ]
 }
+```
 
 ##### Update League Ngrams
 >POST /NYTD/league/<LeagueID>
 Request payload will have upto 5 ngrams for a given user. If ngram exist in db they will be deleted and reinserted.
 
+```
 [
     {
       "ngram": "Obama",
@@ -112,7 +116,7 @@ Request payload will have upto 5 ngrams for a given user. If ngram exist in db t
       "score": 3
     }
 ]
-
+```
 
 
 
