@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="index.js"></script>
 </head>
 <body>
-	<div ui-view>
+	<div>
 		<div class="container-fluid">
 			<div>
 				<nav class="navbar navbar-static-top navbar-default">
@@ -29,31 +29,39 @@
 					</div>
 				</nav>
 			</div>
-			<div>
-				<nav class="col-sm-3">
-					<div class="sidebar-nav">
-						<uib-tabset vertical="true" type="pills">
-							<uib-tab heading="Last Score"></uib-tab>
-							<uib-tab heading="Make Selections"></uib-tab>
-							<uib-tab heading="Leaderboard"></uib-tab>
-						</uib-tabset>
+			<div ng-controller="NYTFantasyViewController">
+				<div>
+					<nav class="col-sm-3">
+						<div class="sidebar-nav">
+							<uib-tabset vertical="true" type="pills">
+								<uib-tab heading="Last Score" ng-click="updateView(1)"></uib-tab>
+								<uib-tab heading="Make Selections" ng-click="updateView(2)"></uib-tab>
+								<uib-tab heading="Leaderboard" ng-click="updateView(3)"></uib-tab>
+							</uib-tabset>
+						</div>
+					</nav>
+				</div>
+				<div class="jumbotron col-sm-9">
+					<div class="col-md-4">
+						<div ng-show="showView(1)">
+							<table class="table">
+								<tr>
+									<th>Word</th>
+									<th>Score</th>
+								</tr>
+								<tr ng-repeat="todaysWord in todaysWords">
+									<td class="{{todaysWord.$rank}}">{{todaysWord.word}}</td>
+									<td class="{{todaysWord.$rank}}">{{todaysWord.score}}</td>
+								</tr>
+							</table>
+						</div>
+						<div ng-show="showView(2)">
+							Next view
+						</div>
+						<div ng-show="showView(3)">
+							Another view
+						</div>
 					</div>
-				</nav>
-			</div>
-			<div class="jumbotron col-sm-9">
-				<div class="col-md-4">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Word</th>
-								<th>Score</th>
-							</tr>
-							<tr ng-repeat="todaysWord in todaysWords">
-								<td class="{{todaysWord.$rank}}">{{todaysWord.word}}</td>
-								<td class="{{todaysWord.$rank}}">{{todaysWord.score}}</td>
-							</tr>
-						</thead>
-					</table>
 				</div>
 			</div>
 		</div>

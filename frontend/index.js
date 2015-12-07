@@ -1,13 +1,19 @@
 (function() {
 	'use strict';
 	
+	// Angular setup
 	var moduleNYT = angular.module('NYTFantasy', ['ui.bootstrap']);
 	
 	moduleNYT.controller('NYTFantasyController', NYTFantasyController);
+	moduleNYT.controller('NYTFantasyViewController', NYTFantasyViewController);
 	moduleNYT.service('wordEndpoint', wordEndpoint);
 	
+	// Main controller
 	function NYTFantasyController($scope) {
-		// Main controller
+		// Displayed view
+		$scope.currentView = 0;
+		
+		// Load today's words
 		$scope.todaysWords = wordEndpoint();
 		
 		angular.forEach($scope.todaysWords, function(word) {
@@ -21,6 +27,23 @@
 		});
 	}
 	
+	// View controller
+	function NYTFantasyViewController($scope) {
+		// Displayed view (start with view 1)
+		$scope.currentView = 1;
+		
+		// Menu handler
+		$scope.updateView = function(view_pos) {
+			$scope.currentView = view_pos;
+		};
+		
+		// View visibility handler
+		$scope.showView = function(view_pos) {
+			return $scope.currentView === view_pos;
+		};
+	}
+	
+	// Word API Handler
 	function wordEndpoint($http) {
 		/*return function() {
 			var url = '/data/scores';
