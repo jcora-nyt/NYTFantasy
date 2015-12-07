@@ -8,8 +8,9 @@ NYT Fantasy Services
 ## Routes
 ---
 
-##### Get List of all leagues
+##### Get List of all Leagues
 > GET /NYTF/league
+
 Returns a list of all leagues. ID's and date, status CLOSED/OPEN. 
 
 Response
@@ -39,6 +40,7 @@ Response
 ##### Get League Details
 
 >GET /NYTF/league/<LeagueID>
+
 Returns the detail of a particular league in context of a user, list of ngrams and scores populated for each ngram if league is closed. This will also contain the leaderboard for that league.
 
 Response
@@ -91,6 +93,7 @@ Response
 
 ##### Update League Ngrams
 >POST /NYTD/league/<LeagueID>
+
 Request payload will have upto 5 ngrams for a given user. If ngram exist in db they will be deleted and reinserted.
 
 ```
