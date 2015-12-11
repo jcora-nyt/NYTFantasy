@@ -9,7 +9,7 @@ NYT Fantasy Services
 ---
 
 ##### Get List of all Leagues
-GET /NYTF/league
+GET /NYTF/user/UserId/league
 
 Returns a list of all leagues. ID's and date, status CLOSED/OPEN. 
 
@@ -39,7 +39,7 @@ Response
 
 ##### Get League Details
 
-GET /NYTF/league/LeagueID
+GET /NYTF/user/UserId/league/LeagueID
 
 Returns the detail of a particular league in context of a user, list of ngrams and scores populated for each ngram if league is closed. This will also contain the leaderboard for that league.
 
@@ -92,31 +92,26 @@ Response
 ```
 
 ##### Update League Ngrams
-POST /NYTD/league/LeagueID
+POST /NYTD/user/UserId/league/LeagueID
 
 Request payload will have upto 5 ngrams for a given user. If ngram exist in db they will be deleted and reinserted.
 
 ```
 [
     {
-      "ngram": "Obama",
-      "score": 5
+      "ngram": "Obama"
     },
     {
-      "ngram": "Democrats",
-      "score": 7
+      "ngram": "Democrats"
     },
     {
-      "ngram": "Football",
-      "score": 12
+      "ngram": "Football"
     },
     {
-      "ngram": "Giants",
-      "score": 7
+      "ngram": "Giants"
     },
     {
-      "ngram": "Spain",
-      "score": 3
+      "ngram": "Spain"
     }
 ]
 ```
