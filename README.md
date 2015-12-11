@@ -52,6 +52,7 @@ Response
   "score_time":"2015-12-06T06:00:00Z",
   "score":34, 
   "rank": 61,
+  "player_count": 2000,
   "ngrams" : [
     {
       "ngram": "President Speech",

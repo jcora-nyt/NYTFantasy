@@ -27,13 +27,13 @@ var routes = Routes{
 	Route{
 		"LeagueCreate",
 		"POST",
-		"/todos",
+		"/NYTF/user/{userId}/league/{leagueId}",
 		LeagueCreate,
 	},
 	Route{
 		"LeagueShow",
 		"GET",
-		"/leagues/{leagueId}",
+		"/NYTF/user/{userId}/league/{leagueId}",
 		LeagueShow,
 	},
 }
