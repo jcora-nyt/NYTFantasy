@@ -1,70 +1,105 @@
 <!DOCTYPE HTML>
 <html ng-app="NYTFantasy" ng-controller="NYTFantasyController">
 <head>
-	<meta charset="utf-8">
-	<title>NYT Fantasy</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="league.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
-	<script type="text/javascript" src="league.js"></script>
+    <meta charset="utf-8">
+    <title>NYT Fantasy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="league.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="league.js"></script>
 </head>
 <body>
-	<div>
-		<div class="container-fluid">
-			<div>
-				<nav class="navbar navbar-static-top navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<a class="navbar-brand" href="#">
-								<img alt="NYT Logo" src="images/nyt.png">
-							</a>
-						</div>
-						<div class="navbar-text navbar-left" id="navbar_nytfantasy_id">
-							NYT Fantasy
-						</div>
-						<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Phil Terp</a></p>
-					</div>
-				</nav>
-			</div>
-			<div ng-controller="NYTFantasyViewController">
-				<div>
-					<nav class="col-sm-3">
-						<div class="sidebar-nav">
-							<uib-tabset vertical="true" type="pills">
-								<uib-tab heading="Last Score" ng-click="updateView(1)"></uib-tab>
-								<uib-tab heading="Make Selections" ng-click="updateView(2)"></uib-tab>
-								<uib-tab heading="Leaderboard" ng-click="updateView(3)"></uib-tab>
-							</uib-tabset>
-						</div>
-					</nav>
-				</div>
-				<div class="jumbotron col-sm-9">
-					<div class="col-md-4">
-						<div ng-show="showView(1)">
-							<table class="table">
-								<tr>
-									<th>Word</th>
-									<th>Score</th>
-								</tr>
-								<tr ng-repeat="todaysWord in todaysWords">
-									<td class="{{todaysWord.$rank}}">{{todaysWord.word}}</td>
-									<td class="{{todaysWord.$rank}}">{{todaysWord.score}}</td>
-								</tr>
-							</table>
-						</div>
-						<div ng-show="showView(2)">
-							Next view
-						</div>
-						<div ng-show="showView(3)">
-							Another view
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div>
+        <div class="container-fluid">
+            <div>
+                <nav class="navbar navbar-static-top navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <img alt="NYT Logo" src="images/nyt.png">
+                            </a>
+                        </div>
+                        <div class="navbar-text navbar-left" id="navbar_nytfantasy_id">
+                            NYT Fantasy
+                        </div>
+                        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Phil Terp</a></p>
+                    </div>
+                </nav>
+            </div>
+            <div ng-controller="NYTFantasyViewController">
+                <div>
+                    <nav class="col-sm-3">
+                        <div class="sidebar-nav">
+                            <uib-tabset vertical="true" type="pills">
+                                <uib-tab heading="Scores / Leaderboard" ng-click="updateView(1)"></uib-tab>
+                                <uib-tab heading="Make Selections" ng-click="updateView(2)"></uib-tab>
+                            </uib-tabset>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-sm-9">
+                    <div ng-show="showView(1)">
+                        <div id="nytf_league_select_id">
+                            <div class="btn-group" uib-dropdown uib-keyboard-nav>
+                                <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" uib-dropdown-toggle>
+                                    Results for <strong>Today</strong> <span class="caret"></span>
+                                </button>
+                                <ul class="uib-dropdown-menu" role="menu" aria-labelledby="simple-btn-keyboard-nav">
+                                    <li role="menuitem"><a href="#">Today</a></li>
+                                    <li role="menuitem"><a href="#">Yesterday</a></li>
+                                    <li class="divider"></li>
+                                    <li role="menuitem"><a href="#">Pick a date</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <uib-accordion close-others="false">
+                            <uib-accordion-group heading="&quot;{{league_data.name}}&quot; - {{league_data.rank}} / {{league_data.player_count}} - Score: {{league_data.score}}" is-open="true">
+                                <table class="table">
+                                    <tr>
+                                        <th>Word</th>
+                                        <th>Score</th>
+                                    </tr>
+                                    <tr ng-repeat="ngram in league_data.ngrams">
+                                        <td class="{{ngram.rank}}">{{ngram.ngram}}</td>
+                                        <td class="{{ngram.rank}}">{{ngram.score}}</td>
+                                    </tr>
+                                </table>
+                            </uib-accordion-group>
+                            <uib-accordion-group heading="Leaderboard" is-open="true">
+                                <table class="table">
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Cumulative Score</th>
+                                    </tr>
+                                </table>
+                            </uib-accordion-group>
+                        </uib-accordion>
+                    </div>
+                    <div ng-show="showView(2)">
+                        <uib-accordion>
+                            <uib-accordion-group heading="Selections for Tomrrow" is-open="true">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group" data-ng-repeat="ngram_pos in [1,2,3,4,5]">
+                                        <label class="control-label col-sm-2" for="email">n-gram {{ngram_pos}}:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="ngram{{ngram_pos}}_id" placeholder="Enter n-gram">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </uib-accordion-group>
+                        </uib-accordion>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
