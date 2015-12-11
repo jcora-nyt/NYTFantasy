@@ -10,20 +10,22 @@ var userNgrams NGrams
 // Give us some seed data
 func init() {
 	var ngrams1 NGrams
-	var n1 = Ngram{Ngram: "Tennis", Score: 25}
-	ngrams1 = append(ngrams1, n1)
-	var n2 = Ngram{Ngram: "President Obama", Score: 44}
-	ngrams1 = append(ngrams1, n2)
+	ngrams1 = append(ngrams1, Ngram{Ngram: "Tennis", Score: 25})
+	ngrams1 = append(ngrams1, Ngram{Ngram: "President Obama", Score: 44})
+	ngrams1 = append(ngrams1, Ngram{Ngram: "Syria", Score: 64})
+	ngrams1 = append(ngrams1, Ngram{Ngram: "France Soccer", Score: 22})
+	ngrams1 = append(ngrams1, Ngram{Ngram: "Nadal", Score: 10})
 
-	RepoCreateLeague(League{Name: "Dec 12th League", Status: "OPEN", NGrams: ngrams1, PlayerCount: 2023})
+	RepoCreateLeague(League{Name: "Dec 12th League", Status: "OPEN", NGrams: ngrams1, PlayerCount: 2023, Score: 165, Rank: 20})
 
 	var ngrams2 NGrams
-	var n12 = Ngram{Ngram: "Cricket", Score: 20}
-	ngrams2 = append(ngrams2, n12)
-	var n22 = Ngram{Ngram: "Trump", Score: 41}
-	ngrams2 = append(ngrams2, n22)
+	ngrams2 = append(ngrams2, Ngram{Ngram: "Cricket", Score: 20})
+	ngrams2 = append(ngrams2, Ngram{Ngram: "Trump", Score: 41})
+	ngrams2 = append(ngrams2, Ngram{Ngram: "Justin Beiber", Score: 21})
+	ngrams2 = append(ngrams2, Ngram{Ngram: "Microsoft", Score: 2})
+	ngrams2 = append(ngrams2, Ngram{Ngram: "Apple", Score: 20})
 
-	RepoCreateLeague(League{Name: "Dec 11th League", Status: "CLOSED", NGrams: ngrams2, PlayerCount: 2313})
+	RepoCreateLeague(League{Name: "Dec 11th League", Status: "CLOSED", NGrams: ngrams2, PlayerCount: 4313, Score: 104, Rank: 65})
 }
 
 func RepoFindLeague(id int) League {
