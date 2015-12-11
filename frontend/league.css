@@ -9,3 +9,17 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+/* Table styles */
+th {
+    border: none !important;
+}
+
+/* Button styles */
+#nytf_league_select_id {
+    padding-bottom: 25px;
+}
+button strong {
+    padding-left: 5px;
+    padding-right: 5px;
+}
