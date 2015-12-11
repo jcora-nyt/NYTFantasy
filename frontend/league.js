@@ -22,11 +22,27 @@
         // View options
         $scope.currentView = 1; // (start with view 1)
 
-        // API settings
+        // Setup API services
         $scope.serviceUserLeagueDetails = serviceUserLeagueDetails;
 
-        // Load the league details for user
-        loadUserLeagueDetails($scope);
+        // Setup API service handlers
+        $scope.loadUserLeagueDetails = function(league_id) {
+            $scope.serviceUserLeagueDetails.service($scope.user_id, league_id, function(data) {
+                // Store the n-gram results
+                $scope.league_data = data;
+                $scope.league_data.ngrams = data.ngrams;
+
+                angular.forEach($scope.league_data.ngrams, function(ngram) {
+                    if (ngram.score > 10) {
+                        ngram.rank = 'success';
+                    } else if (ngram.score > 5 && ngram.score <= 10) {
+                        ngram.rank = 'info';
+                    } else {
+                        ngram.rank = 'danger';
+                    }
+                });
+            });
+        };
 
         // Menu handler
         $scope.updateView = function(view_pos) {
@@ -37,26 +53,15 @@
         $scope.showView = function(view_pos) {
             return $scope.currentView === view_pos;
         };
+
+        // Initialize view //
+
+        // Load the league details for user
+        $scope.loadUserLeagueDetails(2);
     }
 
-    // API Service Handlers
-    function loadUserLeagueDetails($scope) {
-        $scope.serviceUserLeagueDetails.service($scope.user_id, $scope.league_id, function(data) {
-            // Store the n-gram results
-            $scope.league_data = data;
-            $scope.league_data.ngrams = data.ngrams;
-
-            angular.forEach($scope.league_data.ngrams, function(ngram) {
-                if (ngram.score > 10) {
-                    ngram.rank = 'success';
-                } else if (ngram.score > 5 && ngram.score <= 10) {
-                    ngram.rank = 'info';
-                } else {
-                    ngram.rank = 'danger';
-                }
-            });
-        });
-    }
+    /*function loadUserLeagueDetailsHandler($scope) {
+    }*/
 
     // API Services
     function getUserLeagueDetailsService($http) {
