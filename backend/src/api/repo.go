@@ -9,6 +9,8 @@ var userNgrams NGrams
 
 // Give us some seed data
 func init() {
+
+	var leaderBoard1 Players
 	var ngrams1 NGrams
 	ngrams1 = append(ngrams1, Ngram{Ngram: "Tennis", Score: 25})
 	ngrams1 = append(ngrams1, Ngram{Ngram: "President Obama", Score: 44})
@@ -16,8 +18,15 @@ func init() {
 	ngrams1 = append(ngrams1, Ngram{Ngram: "France Soccer", Score: 22})
 	ngrams1 = append(ngrams1, Ngram{Ngram: "Nadal", Score: 10})
 
-	RepoCreateLeague(League{Name: "Dec 12th League", Status: "OPEN", NGrams: ngrams1, PlayerCount: 2023, Score: 165, Rank: 20})
+	leaderBoard1 = append(leaderBoard1, Player{UserName: "happy_nyt", Rank: 1, Score: 991, UserId: 122})
+	leaderBoard1 = append(leaderBoard1, Player{UserName: "coolbean", Rank: 2, Score: 889, UserId: 778})
+	leaderBoard1 = append(leaderBoard1, Player{UserName: "newfreak", Rank: 3, Score: 881, UserId: 2212})
+	leaderBoard1 = append(leaderBoard1, Player{UserName: "hackerofnews", Rank: 4, Score: 789, UserId: 11223})
+	leaderBoard1 = append(leaderBoard1, Player{UserName: "newfreak", Rank: 5, Score: 600, UserId: 122})
 
+	RepoCreateLeague(League{Name: "Dec 12th League", Status: "OPEN", NGrams: ngrams1, PlayerCount: 2023, Score: 165, Rank: 20, Players: leaderBoard1})
+
+	var leaderBoard2 Players
 	var ngrams2 NGrams
 	ngrams2 = append(ngrams2, Ngram{Ngram: "Cricket", Score: 20})
 	ngrams2 = append(ngrams2, Ngram{Ngram: "Trump", Score: 41})
@@ -25,7 +34,13 @@ func init() {
 	ngrams2 = append(ngrams2, Ngram{Ngram: "Microsoft", Score: 2})
 	ngrams2 = append(ngrams2, Ngram{Ngram: "Apple", Score: 20})
 
-	RepoCreateLeague(League{Name: "Dec 11th League", Status: "CLOSED", NGrams: ngrams2, PlayerCount: 4313, Score: 104, Rank: 65})
+	leaderBoard2 = append(leaderBoard1, Player{UserName: "coolbean", Rank: 1, Score: 991, UserId: 122})
+	leaderBoard2 = append(leaderBoard1, Player{UserName: "hotdude", Rank: 2, Score: 879, UserId: 378})
+	leaderBoard2 = append(leaderBoard1, Player{UserName: "somehow", Rank: 3, Score: 778, UserId: 1233})
+	leaderBoard2 = append(leaderBoard1, Player{UserName: "harcorenyt", Rank: 4, Score: 667, UserId: 123})
+	leaderBoard2 = append(leaderBoard1, Player{UserName: "newfreak", Rank: 5, Score: 600, UserId: 122})
+
+	RepoCreateLeague(League{Name: "Dec 11th League", Status: "CLOSED", NGrams: ngrams2, PlayerCount: 4313, Score: 104, Rank: 65, Players: leaderBoard2})
 }
 
 func RepoFindLeague(id int) League {
