@@ -2,11 +2,22 @@ package main
 
 import "time"
 
+type Ngram struct {
+	Ngram string `json:"ngram"`
+	Score int    `json:"score"`
+}
+
+type NGrams []Ngram
+
 type League struct {
-	Id        int       `json:"id"`
-	Name      string    `json:"name"`
-	ScoreTime time.Time `json:"score_time"`
-	Status    string    `json:"status"`
+	Id          int       `json:"id"`
+	Name        string    `json:"name"`
+	ScoreTime   time.Time `json:"score_time"`
+	Status      string    `json:"status"`
+	Score       int       `json:"score"`
+	Rank        int       `json:"rank"`
+	PlayerCount int       `json:"player_count"`
+	NGrams      NGrams    `json:"ngrams"`
 }
 
 type Leagues []League

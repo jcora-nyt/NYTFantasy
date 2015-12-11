@@ -1,0 +1,1 @@
+curl -XPOST -H "Content-Type: application/json" -d '[{"ngram":"Yoga"},{"ngram":"Fedrer"}]' http://localhost:8080/NYTF/user/UserId/league/LeagueID

@@ -64,7 +64,7 @@ Test with this curl command:
 curl -H "Content-Type: application/json" -d '{"name":"New League"}' http://localhost:8080/leagues
 */
 func LeagueCreate(w http.ResponseWriter, r *http.Request) {
-	var league League
+	var userngrams NGrams
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
 	if err != nil {
 		panic(err)
@@ -72,7 +72,7 @@ func LeagueCreate(w http.ResponseWriter, r *http.Request) {
 	if err := r.Body.Close(); err != nil {
 		panic(err)
 	}
-	if err := json.Unmarshal(body, &league); err != nil {
+	if err := json.Unmarshal(body, &userngrams); err != nil {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		w.WriteHeader(422) // unprocessable entity
 		if err := json.NewEncoder(w).Encode(err); err != nil {
@@ -80,10 +80,10 @@ func LeagueCreate(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	t := RepoCreateLeague(league)
+	userngrams = SetUserNgram(userngrams)
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusCreated)
-	if err := json.NewEncoder(w).Encode(t); err != nil {
+	if err := json.NewEncoder(w).Encode(userngrams); err != nil {
 		panic(err)
 	}
 }
