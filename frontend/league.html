@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="league.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
@@ -35,7 +36,7 @@
                         <div class="sidebar-nav">
                             <uib-tabset vertical="true" type="pills">
                                 <uib-tab heading="Scores / Leaderboard" ng-click="updateView(1)"></uib-tab>
-                                <uib-tab heading="Make Selections" ng-click="updateView(2)"></uib-tab>
+                                <uib-tab heading="Tomorrow's Game" ng-click="updateView(2)"></uib-tab>
                             </uib-tabset>
                         </div>
                     </nav>
@@ -71,10 +72,12 @@
                             <uib-accordion-group heading="Leaderboard" is-open="true">
                                 <table class="table">
                                     <tr>
+                                        <th>Rank</th>
                                         <th>User</th>
                                         <th>Cumulative Score</th>
                                     </tr>
                                     <tr ng-repeat="league_rec in league_data.leader_board">
+                                        <td>{{league_rec.rank}}</td>
                                         <td>{{league_rec.user_name}}</td>
                                         <td>{{league_rec.score}}</td>
                                     </tr>
