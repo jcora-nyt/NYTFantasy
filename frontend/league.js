@@ -57,7 +57,7 @@
         // Initialize view //
 
         // Load the league details for user
-        $scope.loadUserLeagueDetails(2);
+        $scope.loadUserLeagueDetails(1);
     }
 
     /*function loadUserLeagueDetailsHandler($scope) {
