@@ -45,11 +45,11 @@
                         <div id="nytf_league_select_id">
                             <div class="btn-group" uib-dropdown uib-keyboard-nav>
                                 <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" uib-dropdown-toggle>
-                                    Results for <strong>Today</strong> <span class="caret"></span>
+                                    Results for <strong>{{league_date}}</strong> <span class="caret"></span>
                                 </button>
                                 <ul class="uib-dropdown-menu" role="menu" aria-labelledby="simple-btn-keyboard-nav" on-toggle="">
-                                    <li role="menuitem"><a href="#" ng-click="loadUserLeagueDetails(1)">Today</a></li>
-                                    <li role="menuitem"><a href="#" ng-click="loadUserLeagueDetails(2)">Yesterday</a></li>
+                                    <li role="menuitem"><a href="#" ng-click="loadUserLeagueDetails('Today')">Today</a></li>
+                                    <li role="menuitem"><a href="#" ng-click="loadUserLeagueDetails('Yesterday')">Yesterday</a></li>
                                     <li class="divider"></li>
                                     <li role="menuitem"><a href="#">Pick a date</a></li>
                                 </ul>
@@ -73,6 +73,10 @@
                                     <tr>
                                         <th>User</th>
                                         <th>Cumulative Score</th>
+                                    </tr>
+                                    <tr ng-repeat="league_rec in league_data.leader_board">
+                                        <td>{{league_rec.user_name}}</td>
+                                        <td>{{league_rec.score}}</td>
                                     </tr>
                                 </table>
                             </uib-accordion-group>

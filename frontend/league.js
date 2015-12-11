@@ -16,6 +16,7 @@
     function NYTFantasyViewController($scope, serviceUserLeagueDetails) {
         // League options
         $scope.user_id = 1;
+        $scope.league_date = 'Today';
         $scope.league_id = 2;
         $scope.league_data = null;
 
@@ -26,7 +27,23 @@
         $scope.serviceUserLeagueDetails = serviceUserLeagueDetails;
 
         // Setup API service handlers
-        $scope.loadUserLeagueDetails = function(league_id) {
+        $scope.loadUserLeagueDetails = function(league_date) {
+            var league_id;
+
+            switch (league_date) {
+                case 'Today':
+                    league_id = 1;
+
+                    break;
+                case 'Yesterday':
+                    league_id = 2;
+
+                    break;
+            }
+
+            // Set the league date
+            $scope.league_date = league_date;
+
             $scope.serviceUserLeagueDetails.service($scope.user_id, league_id, function(data) {
                 // Store the n-gram results
                 $scope.league_data = data;
@@ -57,7 +74,7 @@
         // Initialize view //
 
         // Load the league details for user
-        $scope.loadUserLeagueDetails(1);
+        $scope.loadUserLeagueDetails($scope.league_date);
     }
 
     /*function loadUserLeagueDetailsHandler($scope) {
