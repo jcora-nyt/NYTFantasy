@@ -34,11 +34,11 @@ func init() {
 	ngrams2 = append(ngrams2, Ngram{Ngram: "Microsoft", Score: 2})
 	ngrams2 = append(ngrams2, Ngram{Ngram: "Apple", Score: 20})
 
-	leaderBoard2 = append(leaderBoard1, Player{UserName: "coolbean", Rank: 1, Score: 991, UserId: 122})
-	leaderBoard2 = append(leaderBoard1, Player{UserName: "hotdude", Rank: 2, Score: 879, UserId: 378})
-	leaderBoard2 = append(leaderBoard1, Player{UserName: "somehow", Rank: 3, Score: 778, UserId: 1233})
-	leaderBoard2 = append(leaderBoard1, Player{UserName: "harcorenyt", Rank: 4, Score: 667, UserId: 123})
-	leaderBoard2 = append(leaderBoard1, Player{UserName: "newfreak", Rank: 5, Score: 600, UserId: 122})
+	leaderBoard2 = append(leaderBoard2, Player{UserName: "coolbean", Rank: 1, Score: 991, UserId: 122})
+	leaderBoard2 = append(leaderBoard2, Player{UserName: "hotdude", Rank: 2, Score: 879, UserId: 378})
+	leaderBoard2 = append(leaderBoard2, Player{UserName: "somehow", Rank: 3, Score: 778, UserId: 1233})
+	leaderBoard2 = append(leaderBoard2, Player{UserName: "harcorenyt", Rank: 4, Score: 667, UserId: 123})
+	leaderBoard2 = append(leaderBoard2, Player{UserName: "newfreak", Rank: 5, Score: 600, UserId: 122})
 
 	RepoCreateLeague(League{Name: "Dec 11th League", Status: "CLOSED", NGrams: ngrams2, PlayerCount: 4313, Score: 104, Rank: 65, Players: leaderBoard2})
 }
