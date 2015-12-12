@@ -7,11 +7,11 @@
     moduleNYT.controller('NYTFantasyController', NYTFantasyController);
     moduleNYT.controller('NYTFantasyViewController', NYTFantasyViewController);
     moduleNYT.factory('serviceUserLeagueDetails', getUserLeagueDetailsService);
-    
+
     // Main controller
     function NYTFantasyController($scope) {
     }
-    
+
     // View controller
     function NYTFantasyViewController($scope, serviceUserLeagueDetails) {
         // League options
@@ -21,7 +21,9 @@
         $scope.league_data = null;
 
         // View options
-        $scope.currentView = 1; // (start with view 1)
+        $scope.currentView = 1; // Start with view 1 (scores / leaderboard)
+        $scope.sortLeagueField = '-score'; // Start with league table sorting by score
+        $scope.sortLeaderboardField = 'rank'; // Start with leaderboard table sorting by rank
 
         // Setup API services
         $scope.serviceUserLeagueDetails = serviceUserLeagueDetails;
@@ -65,11 +67,20 @@
         $scope.updateView = function(view_pos) {
             $scope.currentView = view_pos;
         };
-        
+
         // View visibility handler
         $scope.showView = function(view_pos) {
             return $scope.currentView === view_pos;
         };
+
+        // Table Sort Handlers
+        $scope.sortLeague = function(sortField) {
+          $scope.sortLeagueField = sortField;
+        }
+
+        $scope.sortLeaderboard = function(sortField) {
+          $scope.sortLeaderboardField = sortField;
+        }
 
         // Initialize view //
 
