@@ -20,7 +20,7 @@ body{
     font-weight: bold;
 }
 .navbar-brand img{
-    
+
 }
 
 .navbar-wrapper {
@@ -37,8 +37,8 @@ body{
   padding-left: 0;
 }
 .navbar-wrapper .navbar {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 .navbar-wrapper .navbar .container {
   width: auto;
@@ -137,7 +137,7 @@ body{
 }
 
 .main{margin: 10px;}
-    
+
 #bg-animation-wrap {
     position: relative;
 }
