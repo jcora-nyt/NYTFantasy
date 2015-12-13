@@ -15,28 +15,28 @@
     <script type="text/javascript" src="league.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div>
-            <nav class="navbar navbar-static-top navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="http://nytimes.com">
-                            <img alt="NYT Logo" src="images/nyt.png">
-                        </a>
-                        <div class="navbar-brand">
-                            NYT Fantasy
-                        </div>
-                    </div>
-                    <div>
-                        <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="index.html#how_it_works">How It Works</a></li>
-                            <li class="active"><a>League</a></li>
-                        </ul>
+    <div>
+        <nav class="navbar navbar-static-top navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="http://nytimes.com">
+                        <img alt="NYT Logo" src="images/nyt.png">
+                    </a>
+                    <div class="navbar-brand">
+                        NYT Fantasy
                     </div>
                 </div>
-            </nav>
-        </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#how_it_works">How It Works</a></li>
+                        <li class="active"><a>League</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
         <div ng-controller="NYTFantasyViewController">
             <div>
                 <nav class="col-sm-3">
@@ -59,7 +59,7 @@
                                 <li role="menuitem"><a href="#" ng-click="loadUserLeagueDetails('Today')">Today</a></li>
                                 <li role="menuitem"><a href="#" ng-click="loadUserLeagueDetails('Yesterday')">Yesterday</a></li>
                                 <li class="divider"></li>
-                                <li role="menuitem"><a href="#">Pick a date</a></li>
+                                <li role="menuitem"><a href="#" ng-click="toggleDatePicker()"><span ng-model="dateLeague.viewDate" ng-change="loadUserLeagueDetails('Custom')" uib-datepicker-popup="" datepicker-append-to-body="true" is-open="dateLeague.isPickerOpen" show-button-bar="false" min-date="dateLeague.minDate" max-date="dateLeague.maxDate">Pick a date</span></a></li>
                             </ul>
                         </div>
                     </div>
