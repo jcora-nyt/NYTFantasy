@@ -2,6 +2,9 @@
 th {
     border: none !important;
 }
+.nytHeaderSortable {
+    cursor: pointer;
+}
 
 /* Button styles */
 #nytf_league_select_id {

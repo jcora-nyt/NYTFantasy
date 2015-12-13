@@ -67,8 +67,8 @@
                         <uib-accordion-group heading="&quot;{{league_data.name}}&quot; - {{league_data.rank}} / {{league_data.player_count}} - Score: {{league_data.score}}" is-open="true">
                             <table class="table">
                                 <tr>
-                                    <th ng-click="sortLeague('ngram')">Phrase<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeagueField == 'ngram'"></span></th>
-                                    <th ng-click="sortLeague('-score')">Score<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeagueField == '-score'"></span></th>
+                                    <th class="nytHeaderSortable" ng-click="sortLeague('ngram')">Phrase<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeagueField == 'ngram'"></span></th>
+                                    <th class="nytHeaderSortable" ng-click="sortLeague('-score')">Score<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeagueField == '-score'"></span></th>
                                 </tr>
                                 <tr ng-repeat="ngram in league_data.ngrams | orderBy:sortLeagueField">
                                     <td>{{ngram.ngram}}</td>
@@ -79,9 +79,9 @@
                         <uib-accordion-group heading="Leaderboard" is-open="true">
                             <table class="table">
                                 <tr>
-                                    <th ng-click="sortLeaderboard('rank')">Rank<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeaderboardField == 'rank'"></span></th>
-                                    <th ng-click="sortLeaderboard('user_name')">User<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeaderboardField == 'user_name'"></span></th>
-                                    <th ng-click="sortLeaderboard('-score')">Cumulative Score<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeaderboardField == '-score'"></span></th>
+                                    <th class="nytHeaderSortable" ng-click="sortLeaderboard('rank')">Rank<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeaderboardField == 'rank'"></span></th>
+                                    <th class="nytHeaderSortable" ng-click="sortLeaderboard('user_name')">User<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeaderboardField == 'user_name'"></span></th>
+                                    <th class="nytHeaderSortable" ng-click="sortLeaderboard('-score')">Cumulative Score<span class="glyphicon pull-right" ng-class="{'glyphicon-triangle-bottom': true}" ng-show="sortLeaderboardField == '-score'"></span></th>
                                 </tr>
                                 <tr ng-repeat="league_rec in league_data.leader_board | orderBy:sortLeaderboardField">
                                     <td>{{league_rec.rank}}</td>
