@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "time"
 
 var currentId int
 
@@ -24,7 +25,8 @@ func init() {
 	leaderBoard1 = append(leaderBoard1, Player{UserName: "hackerofnews", Rank: 4, Score: 789, UserId: 11223})
 	leaderBoard1 = append(leaderBoard1, Player{UserName: "newfreak", Rank: 5, Score: 600, UserId: 122})
 
-	RepoCreateLeague(League{Name: "Dec 12th League", Status: "OPEN", NGrams: ngrams1, PlayerCount: 2023, Score: 165, Rank: 20, Players: leaderBoard1})
+  var time1, _ = time.Parse(time.RFC3339, "2015-12-12T06:00:00+00:00")
+	RepoCreateLeague(League{Name: "Dec 12th League", ScoreTime: time1, Status: "OPEN", NGrams: ngrams1, PlayerCount: 2023, Score: 165, Rank: 20, Players: leaderBoard1})
 
 	var leaderBoard2 Players
 	var ngrams2 NGrams
@@ -40,7 +42,8 @@ func init() {
 	leaderBoard2 = append(leaderBoard2, Player{UserName: "harcorenyt", Rank: 4, Score: 667, UserId: 123})
 	leaderBoard2 = append(leaderBoard2, Player{UserName: "newfreak", Rank: 5, Score: 600, UserId: 122})
 
-	RepoCreateLeague(League{Name: "Dec 11th League", Status: "CLOSED", NGrams: ngrams2, PlayerCount: 4313, Score: 104, Rank: 65, Players: leaderBoard2})
+  var time2, _ = time.Parse(time.RFC3339, "2015-12-11T06:00:00+00:00")
+	RepoCreateLeague(League{Name: "Dec 11th League", ScoreTime: time2, Status: "CLOSED", NGrams: ngrams2, PlayerCount: 4313, Score: 104, Rank: 65, Players: leaderBoard2})
 }
 
 func RepoFindLeague(id int) League {
